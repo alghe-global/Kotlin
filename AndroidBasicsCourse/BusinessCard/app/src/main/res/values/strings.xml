@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Business Card</string>
+    <string name="business_card_person_name">Jennifer Doe</string>
+    <string name="business_card_person_title">Android Developer Extraordinaire</string>
+    <string name="business_card_header_image_content_description">Jennifer Doe: Android Developer Extraordinaire</string>
+    <string name="presentation_footer_phone_number">+11 (123) 444 555 666</string>
+    <string name="presentation_footer_social_media">\@AndroidDev</string>
+    <string name="presentation_footer_email_address">jen.doe@android.com</string>
+    <string name="presentation_footer_call_icon_text">Call Icon</string>
+    <string name="presentation_footer_share_icon_text">Share Icon</string>
+    <string name="presentation_footer_email_icon_text">Email Icon</string>
+</resources>
