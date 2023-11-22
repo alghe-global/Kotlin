@@ -125,35 +125,39 @@ fun PresentationFooter(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .padding(bottom=40.dp)
     ) {
-        PresentationTextWithIcon(
-            imageVector = appIcons.Call,
-            imageString = stringResource(
-                R.string.presentation_footer_call_icon_text
-            ),
-            text = stringResource(
-                R.string.presentation_footer_phone_number
+        Column(
+            horizontalAlignment = Alignment.Start
+        ) {
+            PresentationTextWithIcon(
+                imageVector = appIcons.Call,
+                imageString = stringResource(
+                    R.string.presentation_footer_call_icon_text
+                ),
+                text = stringResource(
+                    R.string.presentation_footer_phone_number
+                )
             )
-        )
-        Spacer(Modifier.height(10.dp))
-        PresentationTextWithIcon(
-            imageVector = appIcons.Share,
-            imageString = stringResource(
-                R.string.presentation_footer_share_icon_text
-            ),
-            text = stringResource(
-                R.string.presentation_footer_social_media
+            Spacer(Modifier.height(10.dp))
+            PresentationTextWithIcon(
+                imageVector = appIcons.Share,
+                imageString = stringResource(
+                    R.string.presentation_footer_share_icon_text
+                ),
+                text = stringResource(
+                    R.string.presentation_footer_social_media
+                )
             )
-        )
-        Spacer(Modifier.height(10.dp))
-        PresentationTextWithIcon(
-            imageVector = appIcons.Email,
-            imageString = stringResource(
-                R.string.presentation_footer_email_icon_text
-            ),
-            text = stringResource(
-                R.string.presentation_footer_email_address
+            Spacer(Modifier.height(10.dp))
+            PresentationTextWithIcon(
+                imageVector = appIcons.Email,
+                imageString = stringResource(
+                    R.string.presentation_footer_email_icon_text
+                ),
+                text = stringResource(
+                    R.string.presentation_footer_email_address
+                )
             )
-        )
+        }
     }
 }
 
