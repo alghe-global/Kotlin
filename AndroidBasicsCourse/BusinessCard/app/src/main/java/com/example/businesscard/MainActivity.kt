@@ -60,7 +60,7 @@ fun PresentationHeader(
     modifier: Modifier = Modifier
 ) {
     Column(
-        Modifier
+        modifier
             .background(Color.White)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -74,7 +74,7 @@ fun PresentationHeader(
                 contentDescription = stringResource(
                     R.string.business_card_header_image_content_description
                 ),
-                modifier = modifier
+                modifier = Modifier
                     .height(100.dp)
                     .width(100.dp)
             )
@@ -82,13 +82,12 @@ fun PresentationHeader(
         Text(
             text = name,
             fontSize = 36.sp,
-            modifier = modifier
+            modifier = Modifier
                 .padding(bottom=4.dp)
         )
         Text(
             text = description,
             color = Color(0xFF3DDC84),
-            modifier = modifier
         )
     }
 }
@@ -100,56 +99,61 @@ fun PresentationTextWithIcon(
     text: String,
     modifier: Modifier = Modifier
 ) {
-    Row {
-        Icon(imageVector, imageString)
-        Spacer(modifier.width(16.dp))
-        Text(
-            text = text,
-            color = Color(0xFF3DDC84),
-            modifier = modifier
-        )
+    Column(
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.Start,
+    ) {
+        Row {
+            Icon(imageVector, imageString)
+            Spacer(modifier.width(16.dp))
+            Text(
+                text = text,
+                color = Color(0xFF3DDC84),
+            )
+        }
     }
 }
 
 @Composable
 fun PresentationFooter(modifier: Modifier = Modifier) {
     val appIcons = Icons.Rounded
-    Row {
-        Spacer(modifier.width(75.dp))  // XXX: pretty bad solution to center footer
-        Column(
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Bottom,
-            modifier = modifier
-                .fillMaxSize()
-                .padding(bottom = 36.dp)
-        ) {
-            PresentationTextWithIcon(
-                imageVector = appIcons.Call,
-                imageString = stringResource(
-                    R.string.presentation_footer_call_icon_text),
-                text = stringResource(
-                    R.string.presentation_footer_phone_number
-                )
+
+    Column(
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+            .fillMaxSize()
+            .padding(bottom=40.dp)
+    ) {
+        PresentationTextWithIcon(
+            imageVector = appIcons.Call,
+            imageString = stringResource(
+                R.string.presentation_footer_call_icon_text
+            ),
+            text = stringResource(
+                R.string.presentation_footer_phone_number
             )
-            Spacer(modifier.height(10.dp))
-            PresentationTextWithIcon(
-                imageVector = appIcons.Share,
-                imageString = stringResource(
-                    R.string.presentation_footer_share_icon_text),
-                text = stringResource(
-                    R.string.presentation_footer_social_media
-                )
+        )
+        Spacer(Modifier.height(10.dp))
+        PresentationTextWithIcon(
+            imageVector = appIcons.Share,
+            imageString = stringResource(
+                R.string.presentation_footer_share_icon_text
+            ),
+            text = stringResource(
+                R.string.presentation_footer_social_media
             )
-            Spacer(modifier.height(10.dp))
-            PresentationTextWithIcon(
-                imageVector = appIcons.Email,
-                imageString = stringResource(
-                    R.string.presentation_footer_email_icon_text),
-                text = stringResource(
-                    R.string.presentation_footer_email_address
-                )
+        )
+        Spacer(Modifier.height(10.dp))
+        PresentationTextWithIcon(
+            imageVector = appIcons.Email,
+            imageString = stringResource(
+                R.string.presentation_footer_email_icon_text
+            ),
+            text = stringResource(
+                R.string.presentation_footer_email_address
             )
-        }
+        )
     }
 }
 
