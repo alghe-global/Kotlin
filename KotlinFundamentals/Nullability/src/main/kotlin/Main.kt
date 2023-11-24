@@ -9,10 +9,10 @@ fun main() {
     // secondFavoriteActor = null
 
     var thirdFavoriteActor: String? = "Florence Pugh"
-    println("var favoriteActor: String? = \"Florence Pugh\": $thirdFavoriteActor")
+    println("var thirdFavoriteActor: String? = \"Florence Pugh\": $thirdFavoriteActor")
 
     thirdFavoriteActor = null  /* Allowed due to `?' operator declaring nullable variable */
-    println("favoriteActor = null: $thirdFavoriteActor")
+    println("thirdFavoriteActor = null: $thirdFavoriteActor")
 
     var favoriteNumber: Int? = 4
     println("var favoriteNumber: Int? = 4: $favoriteNumber")
@@ -72,14 +72,14 @@ fun main() {
     /**
      * If/else expressions.
      */
-    var eigthFavoriteActor: String? = "FP"
+    var eighthFavoriteActor: String? = "FP"
 
-    val lengthOfName = if (eigthFavoriteActor != null) {
-        eigthFavoriteActor.length
+    val lengthOfName = if (eighthFavoriteActor != null) {
+        eighthFavoriteActor.length
     } else {
         0
     }
-    println("eigthFavoriteActor.length (lengthOfName): $lengthOfName")
+    println("eighthFavoriteActor.length (lengthOfName): $lengthOfName")
 
     /**
      * The ?: Elvis operator
