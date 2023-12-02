@@ -3,6 +3,7 @@ package com.example.tiptime
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,7 +34,7 @@ import java.text.NumberFormat
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        // enableEdgeToEdge()  // Unresolved reference: enableEdgeToEdge
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
             TipTimeTheme {
