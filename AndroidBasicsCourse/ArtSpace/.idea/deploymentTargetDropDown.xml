@@ -4,18 +4,18 @@
     <value>
       <entry key="ArtSpaceLayoutPreview">
         <State>
-          <targetSelectedWithDropDown>
+          <runningDeviceTargetSelectedWithDropDown>
             <Target>
-              <type value="QUICK_BOOT_TARGET" />
+              <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_XL_API_34.avd" />
+                  <type value="SERIAL_NUMBER" />
+                  <value value="R9WT605Q2VW" />
                 </Key>
               </deviceKey>
             </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2023-12-11T13:46:53.299507430Z" />
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2023-12-12T10:46:50.704324101Z" />
         </State>
       </entry>
       <entry key="app">

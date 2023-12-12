@@ -28,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
@@ -57,6 +58,24 @@ class MainActivity : ComponentActivity() {
 fun ArtSpaceLayout() {
     var currentStep by remember { mutableIntStateOf(1) }
 
+    /**
+     * Display a background box.
+     */
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .size(width = 350.dp, height = 350.dp)
+                .background(color = Color.White)
+                .shadow(5.dp)
+        ) {
+
+        }
+    }
     when (currentStep) {
         1 -> {
             ImageWithDescription(
@@ -142,29 +161,35 @@ fun ArtSpaceLayout() {
     }
 
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Bottom,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(start = 20.dp)
     ) {
-        Row(
+        Button(
+            onClick = {
+                if (currentStep < 9) {
+                    currentStep++
+                }
+            },
+            shape = RoundedCornerShape(20),
             modifier = Modifier
+                .size(105.dp, 60.dp)
+                .padding(bottom = 20.dp)
         ) {
-            Button(
-                onClick = {
-                    if (currentStep < 9 ) {
-                        currentStep++
-                    }
-                },
-                shape = RoundedCornerShape(20),
-                modifier = Modifier
-                    .size(105.dp, 60.dp)
-                    .padding(bottom = 20.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.next_button)
-                )
-            }
-            Spacer(modifier = Modifier.width(100.dp))
+            Text(
+                text = stringResource(R.string.next_button)
+            )
+        }
+    }
+    Column(
+        horizontalAlignment = Alignment.End,
+        verticalArrangement = Arrangement.Bottom,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(end = 20.dp)
+    ) {
             Button(
                 onClick = {
                     if (currentStep > 1) {
@@ -178,7 +203,6 @@ fun ArtSpaceLayout() {
             ) {
                 Text(text = stringResource(R.string.previous_button))
             }
-        }
     }
 }
 
@@ -213,12 +237,12 @@ fun ImageWithDescription(
             verticalArrangement = Arrangement.Bottom,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 30.dp, bottom = 90.dp)
+                .padding(start = 20.dp, bottom = 90.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .background(color = Color.LightGray)
-                    .size(width = 335.dp, height = 100.dp)
+                    .background(color = Color.LightGray.copy(alpha = 0.4f))
+                    .size(width = 345.dp, height = 100.dp)
             ) {
                 Column {
                     Text(
