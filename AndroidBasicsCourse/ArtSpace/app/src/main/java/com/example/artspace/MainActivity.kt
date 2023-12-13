@@ -70,7 +70,6 @@ fun ArtSpaceLayout() {
         Box(
             modifier = Modifier
                 .size(width = 350.dp, height = 350.dp)
-                .background(color = Color.White)
                 .shadow(5.dp)
         ) {
 
@@ -215,29 +214,29 @@ fun ImageWithDescription(
     yearResourceId: Int,
     modifier: Modifier = Modifier
 ) {
-    Box(
-        modifier = modifier
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier.fillMaxSize()
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Image(
-                painter = painterResource(drawableResourceId),
-                contentDescription = stringResource(contentDescriptionResourceId),
-                modifier = Modifier
-                    .size(300.dp)
-                    .clip(RectangleShape)
-            )
-        }
-        Spacer(modifier = Modifier.height(30.dp))
+        Image(
+            painter = painterResource(drawableResourceId),
+            contentDescription = stringResource(contentDescriptionResourceId),
+            modifier = Modifier
+                .size(300.dp)
+                .clip(RectangleShape)
+        )
+    }
+    Spacer(modifier = Modifier.height(20.dp))
+    Box(
+        contentAlignment = Alignment.BottomCenter,
+        modifier = Modifier.fillMaxSize()
+    ) {
         Column(
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Bottom,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 20.dp, bottom = 90.dp)
+                .padding(start = 20.dp, bottom = 90.dp, end = 20.dp)
         ) {
             Box(
                 modifier = Modifier
