@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">10Tips</string>
+    <string name="one">Be Kind to Yourself</string>
+    <string name="one_description">Be kind to yourself as the new year begins.</string>
+    <string name="two">Make Time for Friends</string>
+    <string name="two_description">Invest time and energy in your friendships.</string>
+    <string name="three">Work on Your Goals</string>
+    <string name="three_description">Break down a big goal into smaller steps.</string>
+    <string name="four">Find Purpose at Work</string>
+    <string name="four_description">Remind yourself of the larger purpose of your work.</string>
+    <string name="five">Read</string>
+    <string name="five_description">Read a good book.</string>
+    <string name="six">Set a Boundary</string>
+    <string name="six_description">Reflect on a boundary you\'d like to set.</string>
+    <string name="seven">Write a Gratitude Letter</string>
+    <string name="seven_description">Write a gratitude letter to someone.</string>
+    <string name="eight">Find Your Source of Meaning</string>
+    <string name="eight_description">Lean on faith, spirituality, or whatever gives you meaning in life.</string>
+    <string name="nine">Do a Body Scan</string>
+    <string name="nine_description">Try a body scan meditation.</string>
+    <string name="ten">Apologize</string>
+    <string name="ten_description">Apologize when you\'ve hurt someone.</string>
+</resources>
