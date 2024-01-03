@@ -65,7 +65,6 @@ fun TipCardItem(
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(dimensionResource(R.dimen.image_height))
             )
             AnimatedVisibility(
                 visible = expanded,
