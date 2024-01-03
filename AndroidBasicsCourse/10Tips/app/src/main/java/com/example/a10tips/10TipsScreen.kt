@@ -42,16 +42,16 @@ fun TipCardItem(
 
     Card(
         modifier = modifier
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) {
+                expanded = !expanded
+            }
     ) {
         Column(
             modifier = Modifier
                 .padding(dimensionResource(R.dimen.padding_medium))
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null
-                ) {
-                    expanded = !expanded
-                }
         ) {
             Text(
                 text = stringResource(card.title),
