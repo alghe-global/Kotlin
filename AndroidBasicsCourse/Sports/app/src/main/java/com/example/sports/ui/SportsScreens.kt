@@ -16,6 +16,7 @@
 
 package com.example.sports.ui
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -48,6 +49,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -56,12 +58,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -69,6 +73,7 @@ import com.example.sports.R
 import com.example.sports.data.LocalSportsDataProvider
 import com.example.sports.model.Sport
 import com.example.sports.ui.theme.SportsTheme
+import com.example.sports.utils.SportsContentType
 
 /**
  * Main composable that serves as container
@@ -76,9 +81,17 @@ import com.example.sports.ui.theme.SportsTheme
  */
 @Composable
 fun SportsApp(
+    windowSize: WindowWidthSizeClass,
+    modifier: Modifier = Modifier
 ) {
     val viewModel: SportsViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
+    val contentType = when (windowSize) {
+        WindowWidthSizeClass.Compact -> SportsContentType.LIST_ONLY
+        WindowWidthSizeClass.Medium -> SportsContentType.LIST_AND_DETAIL
+        WindowWidthSizeClass.Expanded -> SportsContentType.LIST_AND_DETAIL
+        else -> SportsContentType.LIST_ONLY
+    }
 
     Scaffold(
         topBar = {
@@ -88,30 +101,40 @@ fun SportsApp(
             )
         }
     ) { innerPadding ->
-        if (uiState.isShowingListPage) {
-            SportsList(
-                sports = uiState.sportsList,
-                onClick = {
-                    viewModel.updateCurrentSport(it)
-                    viewModel.navigateToDetailPage()
-                },
-                contentPadding = innerPadding,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        top = dimensionResource(R.dimen.padding_medium),
-                        start = dimensionResource(R.dimen.padding_medium),
-                        end = dimensionResource(R.dimen.padding_medium),
-                    )
+        val activity = LocalContext.current as Activity
+        if (contentType == SportsContentType.LIST_AND_DETAIL) {
+            SportsListAndDetails(
+                uiState = uiState,
+                onClick = { viewModel.updateCurrentSport(it) },
+                onBackPressed = { activity.finish() },
+                contentPadding = innerPadding
             )
         } else {
-            SportsDetail(
-                selectedSport = uiState.currentSport,
-                contentPadding = innerPadding,
-                onBackPressed = {
-                    viewModel.navigateToListPage()
-                }
-            )
+            if (uiState.isShowingListPage) {
+                SportsList(
+                    sports = uiState.sportsList,
+                    onClick = {
+                        viewModel.updateCurrentSport(it)
+                        viewModel.navigateToDetailPage()
+                    },
+                    contentPadding = innerPadding,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            top = dimensionResource(R.dimen.padding_medium),
+                            start = dimensionResource(R.dimen.padding_medium),
+                            end = dimensionResource(R.dimen.padding_medium),
+                        )
+                )
+            } else {
+                SportsDetail(
+                    selectedSport = uiState.currentSport,
+                    contentPadding = innerPadding,
+                    onBackPressed = {
+                        viewModel.navigateToListPage()
+                    }
+                )
+            }
         }
     }
 }
@@ -260,7 +283,7 @@ private fun SportsList(
 private fun SportsDetail(
     selectedSport: Sport,
     onBackPressed: () -> Unit,
-    contentPadding: PaddingValues,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
     modifier: Modifier = Modifier
 ) {
     BackHandler {
@@ -342,6 +365,37 @@ private fun SportsDetail(
     }
 }
 
+@Composable
+private fun SportsListAndDetails(
+    uiState: SportsUiState,
+    onClick: (Sport) -> Unit,
+    onBackPressed: () -> Unit,
+    contentPadding: PaddingValues,
+    modifier: Modifier = Modifier
+) {
+    Row(modifier = modifier) {
+        SportsList(
+            sports = uiState.sportsList,
+            onClick = onClick,
+            modifier = Modifier
+                .weight(2f)
+                .fillMaxWidth()
+                .padding(
+                    top = dimensionResource(R.dimen.padding_medium),
+                    start = dimensionResource(R.dimen.padding_medium),
+                    end = dimensionResource(R.dimen.padding_medium),
+                ),
+            contentPadding = contentPadding
+        )
+        SportsDetail(
+            selectedSport = uiState.currentSport,
+            onBackPressed = onBackPressed,
+            modifier = Modifier.weight(3f),
+            contentPadding = contentPadding
+        )
+    }
+}
+
 @Preview
 @Composable
 fun SportsListItemPreview() {
@@ -361,6 +415,23 @@ fun SportsListPreview() {
             SportsList(
                 sports = LocalSportsDataProvider.getSportsData(),
                 onClick = {},
+            )
+        }
+    }
+}
+
+@Preview(device = Devices.TABLET)
+@Composable
+fun SportsListAndDetailsPreview() {
+    SportsTheme {
+        Surface {
+            val viewModel: SportsViewModel = viewModel()
+            val uiState by viewModel.uiState.collectAsState()
+            SportsListAndDetails(
+                uiState = uiState,
+                contentPadding = PaddingValues(0.dp),
+                onBackPressed = {},
+                onClick = {}
             )
         }
     }
