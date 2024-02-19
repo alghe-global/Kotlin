@@ -1,10 +1,8 @@
 package com.example.bookshelf.data
 
 import com.example.bookshelf.network.BookshelfApiService
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 interface AppContainer {
     val bookshelfRepository: BookshelfRepository
@@ -16,7 +14,7 @@ class DefaultAppContainer : AppContainer {
         "https://www.googleapis.com/books/v1/volumes/"
 
     private val retrofit = Retrofit.Builder()
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(baseUrl)
         .build()
 

@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.bookshelf.R
-import com.example.bookshelf.network.BookshelfVolume
+import com.example.bookshelf.network.BookshelfVolumeImageThumbnail
 import com.example.bookshelf.ui.model.BookshelfUiState
 import com.example.bookshelf.ui.theme.BookshelfTheme
 
@@ -42,7 +42,7 @@ fun HomeScreen(
     when (bookshelfUiState) {
         is BookshelfUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
         is BookshelfUiState.Success -> VolumesGridScreen(
-            volumes = bookshelfUiState.volumes,
+            thumbnails = bookshelfUiState.thumbnails,
             modifier = modifier
         )
         is BookshelfUiState.Error -> ErrorScreen(retryAction, modifier = modifier.fillMaxSize())
@@ -84,7 +84,7 @@ fun ErrorScreen(
 
 @Composable
 fun VolumesGridScreen(
-    volumes: List<BookshelfVolume>,
+    thumbnails: List<BookshelfVolumeImageThumbnail>,
     contentPadding: PaddingValues = PaddingValues(0.dp),
     modifier: Modifier = Modifier
 ) {
@@ -93,9 +93,9 @@ fun VolumesGridScreen(
         modifier = modifier.padding(horizontal = 4.dp),
         contentPadding = contentPadding
     ) {
-        items(items = volumes, key = { volume -> volume.imageLinks }) { volume ->
+        items(items = thumbnails) { thumbnail ->
             BookshelfVolumeCard(
-                volume,
+                thumbnail,
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxSize()
@@ -107,7 +107,7 @@ fun VolumesGridScreen(
 
 @Composable
 fun BookshelfVolumeCard(
-    volume: BookshelfVolume,
+    thumbnail: BookshelfVolumeImageThumbnail,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -116,7 +116,7 @@ fun BookshelfVolumeCard(
     ) {
         AsyncImage(
             model = ImageRequest.Builder(context = LocalContext.current)
-                .data(volume.imageLinks["thumbnail"])
+                .data(thumbnail.thumbnail.replace("http", "https"))
                 .crossfade(true)
                 .build(),
             error = painterResource(R.drawable.ic_broken_image),
@@ -132,13 +132,7 @@ fun BookshelfVolumeCard(
 @Composable
 fun VolumesGridScreenPreview() {
     BookshelfTheme {
-        val mockThumbnail = mapOf(
-            "smallThumbnail" to "url_1",
-            "thumbnail" to "url_2",
-            "small" to "url_3",
-            "medium" to "url_4"
-        )
-        val mockData = List(10) { BookshelfVolume(mockThumbnail) }
+        val mockData = List(10) { BookshelfVolumeImageThumbnail("$it") }
         VolumesGridScreen(mockData)
     }
 }

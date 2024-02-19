@@ -5,8 +5,8 @@ import retrofit2.http.Path
 
 interface BookshelfApiService {
     @GET("?q=jazz+history")
-    suspend fun getBooks(): List<BookshelfBook>
+    suspend fun getBooks(): BookshelfResponse
 
     @GET("{volume_id}")
-    suspend fun getVolume(@Path("id") id: String): BookshelfVolume
+    suspend fun getVolume(@Path("volume_id") id: String): BookshelfVolume
 }
