@@ -1,0 +1,1 @@
+* 05687da Alexandru Gheorghe (alghe.global@gmail.com) Tue, 27 Feb 2024 11:42:08 +0000 [Inventory] Create an item Entity, create the item DAO, create a database instance, implement the repository, add the save functionality
