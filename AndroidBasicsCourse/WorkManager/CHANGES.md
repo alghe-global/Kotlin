@@ -1,0 +1,1 @@
+* 5fa3cdd Alexandru Gheorghe (alghe.global@gmail.com) Sat, 2 Mar 2024 14:24:51 +0000 [WorkManager] Add dependencies, create BlurWorker, update WorkManagerBluromaticRepository, input data and output data, chain Work
