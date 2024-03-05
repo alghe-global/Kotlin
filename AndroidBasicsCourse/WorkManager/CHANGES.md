@@ -1,1 +1,2 @@
+* e51cf7e Alexandru Gheorghe (alghe.global@gmail.com) Tue, 5 Mar 2024 10:48:27 +0000 [WorkManager] Ensure unique work, tag and update the UI based on Work status, show final output, cancel work, work constraints, tests for Worker implementations
 * 5fa3cdd Alexandru Gheorghe (alghe.global@gmail.com) Sat, 2 Mar 2024 14:24:51 +0000 [WorkManager] Add dependencies, create BlurWorker, update WorkManagerBluromaticRepository, input data and output data, chain Work
