@@ -1,0 +1,76 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:7401752067187094502",
+      "lastPropertyId": "4:3643248493121696190",
+      "name": "Image",
+      "properties": [
+        {
+          "id": "1:7638980681512351740",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8249009873847333069",
+          "name": "timestamp",
+          "indexId": "1:6609014298075064808",
+          "type": 6,
+          "flags": 8
+        },
+        {
+          "id": "3:3550799926285132470",
+          "name": "location",
+          "type": 9
+        },
+        {
+          "id": "4:3643248493121696190",
+          "name": "owner",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:4457988116743757342",
+      "lastPropertyId": "3:1538506755010544895",
+      "name": "ImageUser",
+      "properties": [
+        {
+          "id": "1:8757969037982245269",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5960185698912108822",
+          "name": "user",
+          "type": 9
+        },
+        {
+          "id": "3:1538506755010544895",
+          "name": "imageId",
+          "indexId": "2:3113612821979430463",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "Image"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:4457988116743757342",
+  "lastIndexId": "2:3113612821979430463",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
