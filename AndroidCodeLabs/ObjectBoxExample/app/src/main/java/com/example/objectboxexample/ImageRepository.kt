@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 interface ImageRepository {
-    suspend fun getLatest10ImagesInCity(city: String): Flow<List<Image>>
+    suspend fun getLatest10ImagesInCity(city: String, country: String): Flow<List<Image>>
     
     suspend fun getLatest10ImagesInCountry(country: String): Flow<List<Image>>
 
@@ -21,12 +21,11 @@ class ObjectBoxImageRepository(
 
     private val imageBox: Box<Image> = boxStore.boxFor()
 
-    override suspend fun getLatest10ImagesInCity(city: String): Flow<List<Image>> {
+    override suspend fun getLatest10ImagesInCity(city: String, country: String): Flow<List<Image>> {
         return flow {
             val query = imageBox.query().run {
-                contains(
-                    Image_.location,
-                    "$city,",
+                Image_.location.equal(
+                    "${city},${country}",
                     QueryBuilder.StringOrder.CASE_INSENSITIVE
                 )
                 orderDesc(Image_.timestamp)

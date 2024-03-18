@@ -49,8 +49,9 @@ open class ObjectBoxImageRepositoryTest {
 
     @Test
     fun testGetLatest10ImagesInCity_emptyBox_returnsEmptyList() = runTest {
-        val city = "city10"
-        repository.getLatest10ImagesInCity(city).test {
+        val city = "city1"
+        val country = "country1"
+        repository.getLatest10ImagesInCity(city, country).test {
             val emission = awaitItem()
             awaitComplete()
             assertEquals(emptyList<Image>(), emission)
@@ -79,13 +80,14 @@ open class ObjectBoxImageRepositoryTest {
 
     @Test
     fun testGetLatest10ImagesInCity_populatedBox_emitsExpectedImagesForCity() = runTest {
-        val city = "city10"
-        val images = ImageMockDataSource.imageList
+        val city = "city1"
+        val country = "country1"
+        val images = ImageMockDataSource().generateMockData()
 
         /** Insert test Images into the database */
         boxStore.boxFor<Image>().put(images)
 
-        repository.getLatest10ImagesInCity(city).test {
+        repository.getLatest10ImagesInCity(city, country).test {
             val emission = awaitItem()
             awaitComplete()
             assertEquals(listOf(images[9]), emission)
@@ -95,7 +97,7 @@ open class ObjectBoxImageRepositoryTest {
     @Test
     fun testGetLatest10ImagesInCountry_populatedBox_emitsExpectedImagesForCountry() = runTest {
         val country = "country10"
-        val images = ImageMockDataSource.imageList
+        val images = ImageMockDataSource().generateMockData()
 
         /** Insert test Images into the database */
         boxStore.boxFor<Image>().put(images)
@@ -110,7 +112,7 @@ open class ObjectBoxImageRepositoryTest {
     @Test
     fun testGetLatest10ImagesByOwner_populatedBox_emitsExpectedImagesByOwner() = runTest {
         val owner = "my@email.tld"
-        val images = ImageMockDataSource.imageList
+        val images = ImageMockDataSource().generateMockData()
 
         /** Insert test Images into the database */
         boxStore.boxFor<Image>().put(images)
