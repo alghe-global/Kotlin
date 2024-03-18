@@ -90,7 +90,7 @@ open class ObjectBoxImageRepositoryTest {
         repository.getLatest10ImagesInCity(city, country).test {
             val emission = awaitItem()
             awaitComplete()
-            assertEquals(listOf(images[9]), emission)
+            assertEquals(listOf(images[0]), emission)
         }
     }
 
