@@ -1,0 +1,28 @@
+<resources>
+    <dimen name="category_list_padding">16dp</dimen>
+    <dimen name="recommendation_list_padding">16dp</dimen>
+
+    <dimen name="list_and_detail_list_padding_top">20dp</dimen>
+    <dimen name="list_and_detail_list_padding_end">16dp</dimen>
+
+    <dimen name="topbar_logo_size">64dp</dimen>
+    <dimen name="topbar_logo_padding_start">4dp</dimen>
+    <dimen name="topbar_padding_vertical">8dp</dimen>
+
+    <dimen name="detail_card_list_padding_top">24dp</dimen>
+    <dimen name="detail_card_outer_padding_horizontal">24dp</dimen>
+    <dimen name="detail_body_padding_end">40dp</dimen>
+    <dimen name="detail_card_inner_padding">20dp</dimen>
+    <dimen name="detail_content_padding_top">12dp</dimen>
+    <dimen name="detail_expanded_body_spacing">8dp</dimen>
+    <dimen name="detail_button_bar_padding_vertical">20dp</dimen>
+    <dimen name="detail_button_bar_item_spacing">4dp</dimen>
+    <dimen name="detail_action_button_padding_vertical">20dp</dimen>
+    <dimen name="detail_topbar_padding_bottom">24dp</dimen>
+    <dimen name="detail_topbar_back_button_padding_horizontal">24dp</dimen>
+
+    <dimen name="recommendation_location_padding">8dp</dimen>
+    <dimen name="recommendation_accessibility_padding">8dp</dimen>
+    <dimen name="recommendation_time_padding">8dp</dimen>
+    <dimen name="recommendation_type_padding">8dp</dimen>
+</resources>

@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="first_image">Horns</string>
+    <string name="first_image_author">Alexandru Gheorghe</string>
+    <string name="first_image_year">(2016)</string>
+    <string name="second_image">Combat Scene</string>
+    <string name="second_image_author">Alexandru Gheorghe</string>
+    <string name="second_image_year">(2016)</string>
+    <string name="third_image">James Whiteside</string>
+    <string name="third_image_author">Alexandru Gheorghe</string>
+    <string name="third_image_year">(2017)</string>
+    <string name="fourth_image">Saint Resting</string>
+    <string name="fourth_image_author">Alexandru Gheorghe</string>
+    <string name="fourth_image_year">(2017)</string>
+    <string name="fifth_image">Iohannis Philpot</string>
+    <string name="fifth_image_author">Alexandru Gheorghe</string>
+    <string name="fifth_image_year">(2017)</string>
+    <string name="sixth_image">Samuel Auchmuty</string>
+    <string name="sixth_image_author">Alexandru Gheorghe</string>
+    <string name="sixth_image_year">(2017)</string>
+    <string name="seventh_image">Stone</string>
+    <string name="seventh_image_author">Alexandru Gheorghe</string>
+    <string name="seventh_image_year">(2017)</string>
+    <string name="eighth_image">George Enescu</string>
+    <string name="eighth_image_author">Alexandru Gheorghe</string>
+    <string name="eighth_image_year">(2018)</string>
+    <string name="ninth_image">Soldier</string>
+    <string name="ninth_image_author">Alexandru Gheorghe</string>
+    <string name="ninth_image_year">(2018)</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
+</resources>
